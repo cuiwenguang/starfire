@@ -22,23 +22,18 @@ html
             li
               a(href='/blog') 博客
             li
-              a(href='/question') 问答
-      
-          form.navbar-form.navbar-left(role="search")
-            .form-group
-              .input-group
-                input.form-control(placeholder="搜 文章/问题")
-                .input-group-addon
-                  span.glyphicon.glyphicon-search
-  
-          ul.nav.navbar-nav.navbar-right
-            li
-              a(href='/login') 登录
-            li
-              a(href='/user/signup') 注册 
+              a(href='/question') 问答 
 
     .container.body-content
-      block content
+      .signup
+        h2 星火社区注册
+        form(url="/users/", method="post")
+            .form-group
+                label(for="username")
+                input#username.form-control(type="text", name="username")
+            .form-group
+                label(for="email")
+                input#username.form-control(type="text", name="email")
       hr
       footer
         p &copy; 2016.10 - 星火社区 designer by cui
@@ -46,4 +41,3 @@ html
     script(src='//cdn.bootcss.com/jquery/1.11.3/jquery.min.js')
     script(src='//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js')
 
-    block scripts
