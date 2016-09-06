@@ -23,5 +23,8 @@ exports.create = co.wrap(function* (req, res){
 });
 
 exports.signup = function(req, res){
-    res.render('user/signup.jade');
+    res.render('user/signup');
+}
+exports.login = function(req, res){
+    res.render('user/login');
 }

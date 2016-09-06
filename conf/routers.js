@@ -11,8 +11,8 @@ module.exports = function (app, passport) {
     app.get('/', home.index);
     
     //会员
-    app.get('/user/signup', user.signup);
-
+    app.get('/signup', user.signup);
+    app.get('/login',user.login);
 
     // catch 404 and forward to error handler
     app.use(function(req, res, next) {
