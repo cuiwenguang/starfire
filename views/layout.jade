@@ -1,11 +1,19 @@
 doctype html
 html
   head
+<<<<<<< HEAD
     title= title
     link(rel="stylesheet", href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css")
+=======
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title 星火社区 - 星星之火，可以燎原 
+    link(rel='stylesheet' href='//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css')
+>>>>>>> b2c521a39c735bb50119284bc9351157ddcc2f8d
     link(rel='stylesheet', href='/stylesheets/style.css')
     block styles
   body
+<<<<<<< HEAD
     nav.navbar.navbar-default
       .content-fluid
         .navbar-header
@@ -23,3 +31,45 @@ html
     script(src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js")
     script(src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js")
     block scripts
+=======
+    .navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.site-title(href='/') 星火社区
+        .navbar-collapse.collapse
+          ul.nav.navbar-nav
+            li.active
+              a(href='/') 首页
+            li
+              a(href='/blog') 博客
+            li
+              a(href='/question') 问答
+      
+          form.navbar-form.navbar-left(role="search")
+            .form-group
+              .input-group
+                input.form-control(placeholder="搜 文章/问题")
+                .input-group-addon
+                  span.glyphicon.glyphicon-search
+  
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/login') 登录
+            li
+              a(href='/user/signup') 注册 
+
+    .container.body-content
+      block content
+      hr
+      footer
+        p &copy; 2016.10 - 星火社区 designer by cui
+
+    script(src='//cdn.bootcss.com/jquery/1.11.3/jquery.min.js')
+    script(src='//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js')
+
+    block scripts
+>>>>>>> b2c521a39c735bb50119284bc9351157ddcc2f8d
