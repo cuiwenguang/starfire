@@ -7,5 +7,5 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
 exports.index =function (req, res) {
-    res.render('index', {'title': 'star fire club'});    
+    res.render('home/index', {'title': 'star fire club'});    
 }

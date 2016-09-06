@@ -84,8 +84,8 @@ module.exports = function (app, passport) {
             res.locals.csrf_token = req.csrfToken();
             next();
         });
-
-        //开发阶段,输出格式友好的客户端html
-        if(env === 'dev') app.locals.pretty = true;
     }
+    
+    //开发阶段,输出格式友好的客户端html
+    if(env === 'dev') app.locals.pretty = true;
 }
