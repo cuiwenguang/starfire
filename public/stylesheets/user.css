@@ -1,0 +1,12 @@
+.signup{
+    max-width: 550px;
+    margin: 20px auto;
+}
+.signup-header{
+    width: 100%;
+    padding-left: 15px;
+    border-bottom: 1px solid #ddd;
+}
+.signup-body{
+    padding-top: 15px;
+}

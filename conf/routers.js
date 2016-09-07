@@ -9,10 +9,15 @@ const user = require('../controllers/user');
 module.exports = function (app, passport) {
 
     app.get('/', home.index);
-    
+
     //会员
     app.get('/signup', user.signup);
+    app.post('/user/create', user.create);
     app.get('/login',user.login);
+    
+
+    //api
+    app.post('/user/exist',user.exist);
 
     // catch 404 and forward to error handler
     app.use(function(req, res, next) {

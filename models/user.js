@@ -21,6 +21,7 @@ const UserSchema = new Schema({
     provider:{type:String, default:''},
     salt: {type:String, default: ''},
     accessToken:{type:String, default: ''},
+    avatar: {type:String, default :'default.png'},
     qq: {},
     wechat: {},
     weibo: {}
