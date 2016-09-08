@@ -7,14 +7,23 @@ const mongoose = require('mongoose');
 const co = require('co');
 
 const User = mongoose.model('User');
+const passport = require('passport');
 
 exports.create = co.wrap(function* (req, res){
     const user = new User(req.body);
+    user.isActive = true;
+    user.provider = 'local';
     try{
         yield user.save();
-        res.json({id:user.id});
+        req.logIn(user,err=>{
+            if(err) req.flash('info', '抱歉不允许登陆');
+            return res.redirect('/');
+        });
     }catch(err){
-        res.json({state:403,message:err.message});
+        res.render('/signup',{
+            err, 
+            user
+        });
     }
 });
 
@@ -31,6 +40,15 @@ exports.exist = function(req, res){
             res.json({valid:false});
         });
     
+}
+
+exports.returnUrl = function(req, res){
+    res.redirect('/');    
+} 
+
+exports.logout = function(req, res){
+    req.logout();
+    res.redirect('/login');
 }
 
 exports.signup = function(req, res){

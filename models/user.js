@@ -22,6 +22,9 @@ const UserSchema = new Schema({
     salt: {type:String, default: ''},
     accessToken:{type:String, default: ''},
     avatar: {type:String, default :'default.png'},
+    isActive: {type: Boolean, default: false},
+    level: {type: Number, default: 0},
+    integral: {type: Number, default:0},
     qq: {},
     wechat: {},
     weibo: {}
@@ -65,7 +68,7 @@ UserSchema.methods = {
             return crypto
                 .createHmac('sha1', this.salt)
                 .update(pwd)
-                .distinct('hex');
+                .digest('hex');
         }catch (err){
             console.log(err.message);
             return '';
@@ -101,7 +104,7 @@ UserSchema.methods = {
 UserSchema.statics = {
     load: function (options, cb) {
         options.select = options.select || 'username email';
-        return this.findOne(options, criteria)
+        return this.findOne(options.criteria)
             .select(options.select)
             .exec(cb);
     }

@@ -11,10 +11,7 @@ const User = mongoose.model('User');
  * 本地认证
  */
 
-module.exports = new LocalStrategy({
-        usernameField: 'username',
-        passwordField:'hash_password'
-    },
+module.exports = new LocalStrategy(
     function (username, password, done) {
         const options = {
             criteria:{username: username},

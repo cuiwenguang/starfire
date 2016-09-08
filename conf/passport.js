@@ -4,7 +4,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const User = mongoose.Model('User');
+const User = mongoose.model('User');
 
 //本地验证
 const local = require('./passport/local');

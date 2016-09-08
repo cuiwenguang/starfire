@@ -31,29 +31,20 @@ html
     .container.body-content
       .signup
         .signup-header
-          h4 用户注册
+          h4 登陆
         .signup-body
-          form#signform.form-horizontal(action="/user/create", method="post", role="form")
+          form#loginform.form-horizontal(action="/user/auth", method="post", role="form")
             .form-group
               label.col-md-3.control-label(for="username") 账号
               .col-md-9
                 input#username.form-control(type="text", name="username")
             .form-group
-              label.col-md-3.control-label(for="email") 邮箱
-              .col-md-9
-                input#email.form-control(type="text", name="email")
-            .form-group
               label.col-md-3.control-label(for="password") 密码
               .col-md-9
                 input#password.form-control(type="password", name="password")
             .form-group
-              label.col-md-3.control-label(for="chkpwd") 密码确认
-              .col-md-9
-                input#chkpwd.form-control(type="password", name='chkpwd')
-            .form-group
               .col-md-9.col-md-offset-3
-                input(type='hidden', name='_csrf', value="#{csrf_token}")
-                button.btn.btn-primary(type="submit") 提交
+                button.btn.btn-primary(type="submit") 登陆
       hr
       footer
         p &copy; 2016.10 - 星火社区 designer by cui

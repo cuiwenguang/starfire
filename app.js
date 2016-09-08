@@ -20,6 +20,7 @@ fs.readdirSync(models)
     });
 
 require('./conf/express')(app, passport);
+require('./conf/passport')(passport);
 require('./conf/routers')(app, passport);
 
 

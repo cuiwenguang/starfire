@@ -14,6 +14,8 @@ module.exports = function (app, passport) {
     app.get('/signup', user.signup);
     app.post('/user/create', user.create);
     app.get('/login',user.login);
+    app.post('/user/auth', passport.authenticate('local', {successRedirect: '/', failureRedirect: '/login' }));
+    app.get('/logout', user.logout);
     
 
     //api

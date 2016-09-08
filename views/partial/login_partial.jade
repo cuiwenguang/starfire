@@ -1,0 +1,17 @@
+ul.nav.navbar-nav.navbar-right
+  if (req.isAuthenticated())  
+    li.dropdown   
+      a.dropdown-toggle(data-toggle="dropdown", href="#") #{req.user.username}
+        span.caret
+      ul.dropdown-menu
+        li
+          a(href="＃") 设置
+        li
+          a(href="/logout") 注销
+            
+  else
+    li
+      a(href='/login') 登录
+    li
+      a(href='/signup') 注册 
+      

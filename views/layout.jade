@@ -33,11 +33,7 @@ html
                 .input-group-addon
                   span.glyphicon.glyphicon-search
   
-          ul.nav.navbar-nav.navbar-right
-            li
-              a(href='/login') 登录
-            li
-              a(href='/signup') 注册 
+          include ./partial/login_partial.jade
 
     .container.body-content
       block content

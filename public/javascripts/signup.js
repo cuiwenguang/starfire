@@ -72,3 +72,35 @@ $(function(){
         }
     });
 });
+
+/**
+ * 登陆验证
+ */
+$(function(){
+    $('#loginform').bootstrapValidator({
+        message: '验证不通过，请修改输入框红色部分',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields:{
+            username:{
+                message: "用户名验证不通过",
+                validators:{
+                    notEmpty: {
+                        message: "用户名不能为空"
+                    }
+                }
+            },
+            password:{
+                message: '密码无效',
+                validators:{
+                    notEmpty: {
+                        message: "密码不能为空"
+                    }
+                }
+            }
+        }
+    });
+});

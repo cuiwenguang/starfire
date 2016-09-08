@@ -24,7 +24,7 @@ const mongoose = require('mongoose');
 const mongoStore = require('connect-mongo')(session);
 
 const pkg = require('../package.json');
-const env = process.env.NODE_ENV || 'dev';
+const env = process.env.NODE_ENV || 'development';
 
 const db = {
     address: '127.0.0.1',
@@ -75,8 +75,8 @@ module.exports = function (app, passport) {
 
     //视图辅助类,详细见:https://github.com/madhums/node-view-helpers
     app.use(viewHelper(pkg.name));
-
-    if(env !== 'test' && env !== 'dev' ){
+    /*
+    if(env !== 'test'){
         // csrf 攻击
         app.use(csrf());
 
@@ -85,7 +85,7 @@ module.exports = function (app, passport) {
             next();
         });
     }
-    
+    */
     //开发阶段,输出格式友好的客户端html
-    if(env === 'dev') app.locals.pretty = true;
+    if(env === 'development') app.locals.pretty = true;
 }
