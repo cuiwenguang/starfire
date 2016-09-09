@@ -57,3 +57,15 @@ exports.signup = function(req, res){
 exports.login = function(req, res){
     res.render('user/login');
 }
+
+exports.center = function(req, res){
+    res.render('user/center');
+}
+
+exports.setHeader = function(req, res){
+    res.render('user/partial_header');
+}
+
+exports.settings = function(req, res){
+    res.render('user/settings');
+}
