@@ -24,6 +24,7 @@
     "morgan": "~1.2.3",
     "passport": "~0.3.2",
     "passport-local": "^1.0.0",
+    "qiniu": "^6.1.11",
     "serve-favicon": "~2.0.1",
     "view-helpers": "^0.1.5"
   }
