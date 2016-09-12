@@ -18,6 +18,7 @@ module.exports = function (app, passport) {
     app.get('/logout', user.logout);
     app.get('/user/center', user.center);
     app.get('/user/setHeader', user.setHeader);
+    app.get('/user/settings', user.settings);
     
 
     //api

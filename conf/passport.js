@@ -17,7 +17,7 @@ module.exports = function (passport) {
     passport.deserializeUser(function (id, cb) {
         User.load({
             criteria: {_id: id},
-            select: "username name email accessToken"
+            select: "username name email accessToken avatar"
         }, cb);
     });
 

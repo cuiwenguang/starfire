@@ -21,7 +21,7 @@ const UserSchema = new Schema({
     provider:{type:String, default:''},
     salt: {type:String, default: ''},
     accessToken:{type:String, default: ''},
-    avatar: {type:String, default :'default.png'},
+    avatar: {type:String, default :'images/user.png'},
     isActive: {type: Boolean, default: false},
     level: {type: Number, default: 0},
     integral: {type: Number, default:0},
@@ -103,7 +103,7 @@ UserSchema.methods = {
 
 UserSchema.statics = {
     load: function (options, cb) {
-        options.select = options.select || 'username email';
+        options.select = options.select || 'id username name email avatar';
         return this.findOne(options.criteria)
             .select(options.select)
             .exec(cb);
