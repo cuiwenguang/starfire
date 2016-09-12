@@ -1,6 +1,6 @@
 $(function(){
-    $("#set_head").click(function(){
-        $.get('/user/setHeader', function(data){
+    $("#settings").click(function(){
+        $.get('/user/settings', function(data){
             $("#placeholder").html(data);        
         });
     });
