@@ -3,8 +3,9 @@
     .panel-body
         .row
             .col-md-3
-                form(action="/user/upload", method="post")
-                    img(src="#{req.user.avatar}")
+                #header
+                    form(action="/user/upload", method="post")
+                        img(src="#{req.user.avatar}")
             .col-md-9
                 form.form-horizontal(action="/users/", method="put")
                     .form-group

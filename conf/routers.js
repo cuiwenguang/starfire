@@ -5,6 +5,7 @@
 
 const home = require('../controllers/home');
 const user = require('../controllers/user');
+const file = require('../controllers/file');
 
 module.exports = function (app, passport) {
 
@@ -23,6 +24,7 @@ module.exports = function (app, passport) {
 
     //api
     app.post('/user/exist',user.exist);
+    app.get('/api/file/token',file.token)
 
     // catch 404 and forward to error handler
     app.use(function(req, res, next) {
