@@ -1,18 +1,21 @@
 $(function(){
     $("#settings").click(function(){
+        var uploader;
         $.get('/user/settings', function(data){
             //个人信息设置
             $("#placeholder").html(data);
-            //上传头像按钮
-            $("#selPicture").click(function(){
-                initUploader(this.id,'avatarView',false);
-            });
+            initUploader("selPicture",false)
             //裁剪头像
-            $("#setHeader").click(function(){
+            $("#").click(function(){
                 $("#modalAvatar").modal();
+                //上传头像按钮
+                $("#selPicture").click(function(){
+                    uploader = initUploader(this.id,'avatarView',false);
+                });
                 $("#avatarView").cropper({
                      aspectRatio: 1 / 1,
                     crop: function(e){
+                        /*
                         console.log(e.x);
                         console.log(e.y);
                         console.log(e.width);
@@ -20,6 +23,7 @@ $(function(){
                         console.log(e.rotate);
                         console.log(e.scaleX);
                         console.log(e.scaleY);
+                        */
                     }
                 });
             });        
@@ -70,7 +74,7 @@ function initUploader(pickButton,preview,multiple){
                     var res = $.parseJSON(info);
                     var sourceLink = domain + res.key;  //获取上传成功后的文件的Url
                     if(preview){
-                        $("#"+preview).attr("src", sourceLink);
+                        $("#"+preview).attr("src", sourceLink + "?imageView2/0/w/260");
                     }
                     
             },
