@@ -23,7 +23,7 @@ $(function(){
                     },
                     threshold: 3, //三个字符以上开始验证
                     remote:{
-                        url: '/user/exist',
+                        url: '/api/user/exist',
                         message: '用户名已存在',
                         delay: 3000, //3秒请求一次
                         type: 'POST'

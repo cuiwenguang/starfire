@@ -1,9 +1,9 @@
-include ./partial/_header
-
-include ./partial/_nav
-
-.container.body-content
-  block content
-  block footer
-    
-include ./partial/_footer
+doctype html
+html
+  include ./partial/_header
+  body
+    include ./partial/_nav
+    .container.body-content
+      block content
+      block footer
+      include ./partial/_footer
