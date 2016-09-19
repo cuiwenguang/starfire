@@ -4,8 +4,7 @@
         .row
             .col-md-3
                 #header
-                    form(action="/user/upload", method="post")
-                        img(src="#{req.user.avatar}")
+                    img#setHeader(src="#{req.user.avatar}")
             .col-md-9
                 form.form-horizontal(action="/users/", method="put")
                     .form-group
@@ -22,5 +21,21 @@
                             input#email.form-control(type="email",name="email",value="#{req.user.email}")
                     .form-group
                         .col-sm-10.col-sm-offset-2
+                            input#avatar(type="hidden", value="#{req.user.avatar}")
                             button.btn.btn-primary 保存   
-                
+
+#modalAvatar.modal.fade(aria-hidden="true",data-toggle="modal")
+    .modal-dialog
+        .modal-content
+            .modal-header
+                button.close(data-dismiss="modal")
+                    span(aria-hidden="true") &times;
+                    span.sr-only 关闭
+                h4.modal-title 设置头像
+            .modal-body
+                #modalAvatarBody.img-container
+                    img#avatarView(src="#{req.user.avatar}")
+            .modal-footer
+                button#selPicture.btn.btn-primary 选择头像
+                button#savePicture.btn.btn-primary 保存
+                button.btn.btn-default(data-dismiss="modal") 取消

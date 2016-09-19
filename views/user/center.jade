@@ -1,5 +1,7 @@
 extends ../layout
-
+block styles
+    link(rel="stylesheet", href="/stylesheets/cropper.min.css")
+    link(rel='stylesheet', href='/stylesheets/user.css')
 block content
     .row.content-body
         .col-md-2
@@ -19,6 +21,11 @@ block content
             div#placeholder 
 
 block scripts
-    script(src="/javascripts/qiniu/plupload.full.min.js")
+    script(src="/javascripts/qiniu/moxie.min.js")
+    script(src="/javascripts/qiniu/plupload.min.js")
+    script(src="/javascripts/qiniu/zh_CN.js")
+    script(src="/javascripts/qiniu/ui.js")
+    script(src="/javascripts/qiniu/qiniu.min.js")
+    script(src="/javascripts/qiniu/cropper.min.js")
     script(src="/javascripts/user.js")
     

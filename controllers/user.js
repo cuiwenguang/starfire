@@ -5,6 +5,7 @@
 
 const mongoose = require('mongoose');
 const co = require('co');
+const only = require('only');
 
 const User = mongoose.model('User');
 const passport = require('passport');
@@ -26,6 +27,15 @@ exports.create = co.wrap(function* (req, res){
         });
     }
 });
+
+exports.update = function(req, res){
+    const user = User.load({_id:req.user.id});
+    Object.assign(user, only(name,email,avatar));
+    user.save()
+        .then(function(user){
+            req.json({success:true});
+        }); 
+};
 
 exports.exist = function(req, res){
     const username = req.body.username;

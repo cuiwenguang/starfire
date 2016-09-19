@@ -24,6 +24,7 @@ module.exports = function (app, passport) {
 
     //api
     app.post('/user/exist',user.exist);
+    app.put('users/', user.update);
     app.get('/api/file/token',file.token)
 
     // catch 404 and forward to error handler
