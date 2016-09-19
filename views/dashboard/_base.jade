@@ -1,0 +1,32 @@
+extends ../layout
+block styles
+    link(rel="stylesheet", href="/stylesheets/cropper.min.css")
+    link(rel='stylesheet', href='/stylesheets/user.css')
+block content
+    .row.content-body
+        .col-md-2
+            .list-group
+                a.list-group-item.disabled 个人设置
+                a#settings.list-group-item(href="#settings") 基本信息
+                a.list-group-item(href="#safe") 安全
+            .list-group
+                a.list-group-item.disabled 文章
+                a.list-group-item(href="#") 写文章
+                a.list-group-item(href="#") 草稿箱
+            .list-group
+                a.list-group-item.disabled 问答
+                a.list-group-item(href="#") 提问题
+                a.list-group-item(href="#") 我的问题
+        .col-md-10
+            div#placeholder
+                block dashboardContent 
+
+block scripts
+    script(src="/javascripts/qiniu/moxie.min.js")
+    script(src="/javascripts/qiniu/plupload.min.js")
+    script(src="/javascripts/qiniu/zh_CN.js")
+    script(src="/javascripts/qiniu/ui.js")
+    script(src="/javascripts/qiniu/qiniu.min.js")
+    script(src="/javascripts/qiniu/cropper.min.js")
+    script(src="/javascripts/user.js")
+    

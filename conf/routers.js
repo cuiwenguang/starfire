@@ -7,25 +7,26 @@ const home = require('../controllers/home');
 const user = require('../controllers/user');
 const file = require('../controllers/file');
 
-module.exports = function (app, passport) {
+module.exports = function (app) {
 
     app.get('/', home.index);
 
     //会员
     app.get('/signup', user.signup);
-    app.post('/user/create', user.create);
     app.get('/login',user.login);
-    app.post('/user/auth', passport.authenticate('local', {successRedirect: '/', failureRedirect: '/login' }));
-    app.get('/logout', user.logout);
-    app.get('/user/center', user.center);
-    app.get('/user/setHeader', user.setHeader);
-    app.get('/user/settings', user.settings);
-    
-
-    //api
+    app.get('/users/center', user.center);
+    app.get('/users/setHeader', user.setHeader);
+    app.get('/users/settings', user.settings);
+    //-------api------------
+    //auth
+    app.get('api/logout',user.logout);
+    app.post('api/login', user.login);
+    //user
     app.post('/user/exist',user.exist);
-    app.put('users/', user.update);
-    app.get('/api/file/token',file.token)
+    app.post('/api/users/create', user.create);
+    app.put('users/update/:id', user.update);
+    app.get('/api/file/token',file.token);
+
 
     // catch 404 and forward to error handler
     app.use(function(req, res, next) {

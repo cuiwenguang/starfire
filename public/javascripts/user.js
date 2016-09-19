@@ -112,5 +112,4 @@ function initUploader(pickButton,preview,multiple){
                 }
             }
     });
-
 }

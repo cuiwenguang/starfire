@@ -1,47 +1,9 @@
-doctype html
-html
-  head
-    title= title
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    title 星火社区 - 星星之火，可以燎原 
-    link(rel='stylesheet' href='//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css')
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    block styles
-  body
-    .navbar.navbar-default.navbar-fixed-top
-      .container
-        .navbar-header
-          button.navbar-toggle(type='button', data-toggle='collapse', data-target='navbar-collapse')
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand.site-title(href='/') 星火社区
-        .navbar-collapse.collapse
-          ul.nav.navbar-nav
-            li.active
-              a(href='/') 首页
-            li
-              a(href='/blog') 博客
-            li
-              a(href='/question') 问答
-          
-          form.navbar-form.navbar-left(role="search")
-            .form-group
-              .input-group
-                input.form-control(placeholder="搜 文章/问题")
-                .input-group-addon
-                  span.glyphicon.glyphicon-search
-  
-          include ./partial/login_partial.jade
+include ./partial/_header
 
-    .container.body-content
-      block content
-      hr
-      footer
-        p &copy; 2016.10 - 星火社区 designer by cui
+include ./partial/_nav
 
-    script(src='//cdn.bootcss.com/jquery/1.11.3/jquery.min.js')
-    script(src='//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js')
-
-    block scripts
+.container.body-content
+  block content
+  block footer
+    
+include ./partial/_footer

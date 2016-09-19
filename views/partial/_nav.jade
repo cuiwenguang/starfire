@@ -1,0 +1,25 @@
+.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      button.navbar-toggle(type='button', data-toggle='collapse', data-target='navbar-collapse')
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand.site-title(href='/') 星火社区
+    .navbar-collapse.collapse
+      ul.nav.navbar-nav
+        li.active
+          a(href='/') 首页
+        li
+          a(href='/blog') 博客
+        li
+          a(href='/question') 问答
+      
+      form.navbar-form.navbar-left(role="search")
+        .form-group
+          .input-group
+            input.form-control(placeholder="搜 文章/问题")
+            .input-group-addon
+              span.glyphicon.glyphicon-search
+
+      include ./_loginPartial.jade
