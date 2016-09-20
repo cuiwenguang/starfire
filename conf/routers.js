@@ -19,8 +19,8 @@ module.exports = function (app) {
     app.get('/users/settings', user.settings);
     //-------api------------
     //auth
-    app.get('api/logout',user.logout);
-    app.post('api/login', user.login);
+    app.get('/api/logout',user.logout);
+    app.post('/api/login', user.auth);
     //user
     app.post('/user/exist',user.exist);
     app.post('/api/users/create', user.create);

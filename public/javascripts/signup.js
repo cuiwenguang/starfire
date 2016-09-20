@@ -2,6 +2,7 @@
  * 注册表单验证
  */
 $(function(){
+    //验证
     $('#signform').bootstrapValidator({
         message: '验证不通过，请修改输入框红色部分',
         feedbackIcons: {
@@ -71,6 +72,7 @@ $(function(){
             }
         }
     });
+   
 });
 
 /**
@@ -101,6 +103,20 @@ $(function(){
                     }
                 }
             }
+        },
+        submitHandler: function(validator, form, submitButton){
+            
         }
+    }).on('success.form.bv',function(e){
+        e.preventDefault();
+        var $form = $(e.target);
+
+        $.post($form.attr('action'), $form.serialize(),function(result){
+            if(result.status===200){
+                location.href = '/';
+            }else{
+                alert(result);
+            }
+        });
     });
 });

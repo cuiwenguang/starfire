@@ -85,22 +85,23 @@ exports.exist = function(req, res){
         });    
 }
 
-exports.login = function(req, res){
+exports.auth = function(req, res, next){
     let strategy = req.body.strategy
     passport.authenticate(strategy, function(err,user,info){
         if (!req.user){
-        res.json(apiResult.jsonResult(
+            return res.json(apiResult.jsonResult(
                 apiResult.NOT_VALIDATE,
                 false,
                 info
             ));    
+        }else{
+            return res.json(apiResult.jsonResult(
+                apiResult.OK,
+                req.user,
+                info
+            ));
         }
-        res.json(apiResult.jsonResult(
-            apiResult.OK,
-            req.user,
-            info
-        ));
-    });
+    })(req, res, next);
 }
 exports.logout = function(req, res){
     req.logout();
