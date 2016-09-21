@@ -7,7 +7,7 @@ block content
         .col-md-2
             .list-group
                 a.list-group-item.disabled 个人设置
-                a#settings.list-group-item(href="#settings") 基本信息
+                a#settings.list-group-item(href="/dashboard/userSettings") 基本信息
                 a.list-group-item(href="#safe") 安全
             .list-group
                 a.list-group-item.disabled 文章
@@ -21,12 +21,12 @@ block content
             div#placeholder
                 block dashboardContent 
 
-block scripts
+block scripts    
     script(src="/javascripts/qiniu/moxie.min.js")
     script(src="/javascripts/qiniu/plupload.min.js")
     script(src="/javascripts/qiniu/zh_CN.js")
     script(src="/javascripts/qiniu/ui.js")
     script(src="/javascripts/qiniu/qiniu.min.js")
     script(src="/javascripts/qiniu/cropper.min.js")
-    script(src="/javascripts/user.js")
-    
+    script(src='//cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js')
+    block pagescript

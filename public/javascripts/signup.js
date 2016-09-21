@@ -24,9 +24,9 @@ $(function(){
                     },
                     threshold: 3, //三个字符以上开始验证
                     remote:{
-                        url: '/api/user/exist',
+                        url: '/api/users/exist',
                         message: '用户名已存在',
-                        delay: 3000, //3秒请求一次
+                        delay: 2000, //2秒请求一次
                         type: 'POST'
                     },
                     regexp: {
@@ -71,8 +71,23 @@ $(function(){
                 
             }
         }
+    }).on('success.form.bv',function(e){
+        e.preventDefault();
+        var $form = $(e.target);
+
+        $.post($form.attr('action'), $form.serialize(),function(result){
+            if(result.status===200){
+                location.href = '/';
+            }else{
+                let alert = '<div id="a1" class="alert alert-warning fade in">'+ result.message +'</div>';
+                $(alert).appendTo("#loginAlert");
+                setTimeout(function() {
+                    $('#a1').hide();
+                    $('#btnLogin').removeAttr('disabled');
+                }, 3000); 
+            }
+        });
     });
-   
 });
 
 /**
@@ -115,7 +130,12 @@ $(function(){
             if(result.status===200){
                 location.href = '/';
             }else{
-                alert(result);
+                let alert = '<div id="a1" class="alert alert-warning fade in">'+ result.message +'</div>';
+                $(alert).appendTo("#loginAlert");
+                setTimeout(function() {
+                    $('#a1').hide();
+                    $('#btnLogin').removeAttr('disabled');
+                }, 3000); 
             }
         });
     });

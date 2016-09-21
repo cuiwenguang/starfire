@@ -6,6 +6,7 @@ html
   body
     include ../partial/_nav      
     .container.body-content
+      #loginAlert 
       .signup
         .signup-header
           h4 登陆
@@ -24,7 +25,8 @@ html
                 input(type='hidden', name="strategy", value="local")
                 button#btnLogin.btn.btn-primary(type="submit") 登陆
       include ../partial/_footer
-      block scripts
-        script(src="//cdn.bootcss.com/jquery.form/3.51/jquery.form.min.js")
-        script(src='//cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js')
-        script(src='/javascripts/signup.js')
+      script(src='//cdn.bootcss.com/jquery/1.11.3/jquery.min.js')
+      script(src='//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js')
+      script(src='//cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js')
+      script(src='/javascripts/signup.js')
+        

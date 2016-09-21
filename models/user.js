@@ -21,7 +21,7 @@ const UserSchema = new Schema({
     provider:{type:String, default:''},
     salt: {type:String, default: ''},
     accessToken:{type:String, default: ''},
-    avatar: {type:String, default :'images/user.png'},
+    avatar: {type:String, default :'/images/user.png'},
     isActive: {type: Boolean, default: false},
     level: {type: Number, default: 0},
     integral: {type: Number, default:0},

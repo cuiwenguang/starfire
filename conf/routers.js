@@ -3,28 +3,36 @@
  */
 'use strict';
 
-const home = require('../controllers/home');
-const user = require('../controllers/user');
-const file = require('../controllers/file');
+const home = require('../controllers/homeController');
+const user = require('../controllers/userController');
+const dashboard = require('../controllers/dashboardController');
+const file = require('../controllers/fileController');
 
 module.exports = function (app) {
 
     app.get('/', home.index);
 
+    //----------view----------
     //会员
     app.get('/signup', user.signup);
     app.get('/login',user.login);
-    app.get('/users/center', user.center);
-    app.get('/users/setHeader', user.setHeader);
-    app.get('/users/settings', user.settings);
-    //-------api------------
+    app.get('/signOut', user.signOut);
+    
+    // 管理中心
+    app.get('/dashboard/index', dashboard.index);
+    app.get('/dashboard/userSettings', dashboard.settings);
+
+    //----------api------------
     //auth
     app.get('/api/logout',user.logout);
     app.post('/api/login', user.auth);
+    
     //user
-    app.post('/user/exist',user.exist);
+    app.post('/api/users/exist',user.exist);
     app.post('/api/users/create', user.create);
-    app.put('users/update/:id', user.update);
+    app.put('/api/users/update', user.update);
+
+    //image token
     app.get('/api/file/token',file.token);
 
 

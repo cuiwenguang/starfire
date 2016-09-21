@@ -24,18 +24,18 @@ exports.create = co.wrap(function* (req, res){
         yield user.save();
         req.logIn(user,err=>{
             if(err){
-                req.json(apiResult.jsonResult(
+                res.json(apiResult.jsonResult(
                     apiResult.METHOD_NOT_ALLOWED,
                     null,
                     "抱歉不允许登录"));
             } 
-            return req.json(apiResult.jsonResult(
+            return res.json(apiResult.jsonResult(
                 apiResult.OK,
                 user,
                 "success"));
         });
     }catch(err){
-        req.json(apiResult.jsonResult(
+        res.json(apiResult.jsonResult(
             apiResult.SERVER_ERROR,
             null,
             err.message));
@@ -43,20 +43,20 @@ exports.create = co.wrap(function* (req, res){
 });
 
 //update: put /users
-exports.update = function(req, res){
-    const user = User.load({_id:req.user.id});
-    Object.assign(user, only(name,email,avatar));
+exports.update = co.wrap(function* (req, res){ 
+    const user = yield User.load({criteria:{_id:req.user.id}});
+    Object.assign(user, only(req.body, 'name email avatar'));
     user.save()
         .then(function(user){
-            req.json(apiResult.jsonResult(
+            res.json(apiResult.jsonResult(
                 apiResult.OK,user,'success'
             ));
         }).catch(function(err){
-            req.json(apiResult.jsonResult(
+            res.json(apiResult.jsonResult(
                 apiResult.SERVER_ERROR,null,err.message
             ));
         }); 
-};
+});
 
 // exist post /users/exist
 exports.exist = function(req, res){
@@ -64,17 +64,9 @@ exports.exist = function(req, res){
     User.findOne({username: username})
         .then(function(user){
             if(user){
-                res.json(apiResult.jsonResult(
-                    apiResult.NOT_VALIDATE,
-                    false,
-                    '改用户已存在'
-                ));
+                res.json({valid:false});
             }else{
-                res.json(apiResult.jsonResult(
-                        apiResult.OK,
-                        true,
-                        '改用户已存在'
-                ));
+                res.json({valid:true});
             }
         },function(err){
             res.json(apiResult.jsonResult(
@@ -88,21 +80,33 @@ exports.exist = function(req, res){
 exports.auth = function(req, res, next){
     let strategy = req.body.strategy
     passport.authenticate(strategy, function(err,user,info){
-        if (!req.user){
+        if (!user){
             return res.json(apiResult.jsonResult(
                 apiResult.NOT_VALIDATE,
                 false,
-                info
+                info.message
             ));    
-        }else{
-            return res.json(apiResult.jsonResult(
-                apiResult.OK,
-                req.user,
-                info
-            ));
         }
+        req.logIn(user, err=>{
+            if(err){
+                return res.json(apiResult.jsonResult(
+                    apiResult.NOT_VALIDATE,
+                    false,
+                    err.message
+                )); 
+            }else{
+                return res.json(apiResult.jsonResult(
+                    apiResult.OK,
+                    user,
+                    info
+                ));
+            }
+            
+        });
+        
     })(req, res, next);
 }
+
 exports.logout = function(req, res){
     req.logout();
     res.json(apiResult.jsonResult(
@@ -111,7 +115,6 @@ exports.logout = function(req, res){
         'success'
     ));
 }
-
 /*------------------api end------------------------------- */
 
 /**
@@ -128,14 +131,11 @@ exports.login = function(req, res){
     res.render('user/login');
 }
 
-exports.center = function(req, res){
-    res.render('user/center');
-}
-
 exports.setHeader = function(req, res){
     res.render('user/partial_header');
 }
 
-exports.settings = function(req, res){
-    res.render('user/settings');
+exports.signOut = function(req,res){
+    req.logout();
+    res.redirect('/')
 }
