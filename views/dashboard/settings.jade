@@ -26,7 +26,7 @@ block dashboardContent
                                 input#email.form-control(type="email",name="email",value="#{req.user.email}")
                         .form-group
                             .col-sm-10.col-sm-offset-2
-                                input#avatar(type="hidden", value="#{req.user.avatar}")
+                                input#avatar(type="hidden",name="avatar", value="#{req.user.avatar}")
                                 button#saveUser.btn.btn-primary(type="submit") 保存   
 
     #modalAvatar.modal.fade(aria-hidden="true",data-toggle="modal")
